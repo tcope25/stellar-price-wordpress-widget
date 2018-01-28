@@ -132,7 +132,7 @@ class Stellar_Price_Widget extends WP_Widget {
 					if ($calculator) {
 							echo '
 								<input type="text" style="display:none;" id="curprice" value="'.$jsonObj[0]['price_usd'].'">
-								<input type="text" placeholder="Enter XML amount" style="padding:5px;text-align:center;width:130px;font-size:.8em;" id="stellaramount" onkeypress="multiplyBy();">
+								<input type="text" placeholder="Enter XML amount" style="padding:5px;text-align:center;width:130px;font-size:.8em;" id="stellaramount" oninput="multiplyBy();">
 								<div style="color:green;padding-bottom:10px;padding-top:10px;" id="amountinusd"> USD</div>
 								';
 					}
