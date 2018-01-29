@@ -154,18 +154,12 @@ class Stellar_Price_Widget extends WP_Widget {
 
 	public function getLumensPrice($url) {
 	
-			$ch = curl_init();
-			curl_setopt ($ch, CURLOPT_URL, $url);
-			curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 5);
-			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
-			$price = curl_exec($ch);
+			$price = wp_remote_retrieve_body( wp_remote_get( $url ) );
 		
 			if (!is_string($price) || !strlen($price)) {
 			$price = '0.00';
 			}
 			
-			curl_close($ch);
-
 		return $price;
 	
 	}	
