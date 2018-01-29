@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Stellar Price Widget
+ * Plugin Name: Display Stellar Lumens Price
  * Plugin URI: https://www.stellarwidget.com
  * Description: This plugin adds the Stellar Lumens latest price to your site
  * Version: 1.0.0
@@ -143,9 +143,7 @@ class Stellar_Price_Widget extends WP_Widget {
 			
 
 			
-		echo '
-		<script type="text/javascript">pcentColor();</script>
-		</div>';
+		echo '</div>';
 
 		// WordPress core after_widget hook (always include )
 		echo $after_widget;
@@ -153,7 +151,7 @@ class Stellar_Price_Widget extends WP_Widget {
 	}
 
 	public function getLumensPrice($url) {
-	
+		
 			$price = wp_remote_retrieve_body( wp_remote_get( $url ) );
 		
 			if (!is_string($price) || !strlen($price)) {
