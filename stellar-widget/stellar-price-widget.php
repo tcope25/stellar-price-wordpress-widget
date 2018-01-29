@@ -9,12 +9,12 @@
  * License: GPL2
  */
  
- define ( 'URL', 'https://stellarwidget.com/api/price/');
+ define ( 'GRAB_PRICE_URL', 'https://stellarwidget.com/api/price/');
  
 // The widget class
 class Stellar_Price_Widget extends WP_Widget {
 
-	protected $url = URL;
+	protected $url = GRAB_PRICE_URL;
 
 	// Main constructor
 	public function __construct() {
@@ -96,7 +96,7 @@ class Stellar_Price_Widget extends WP_Widget {
 		$btcvalue = ! empty( $instance['btcvalue'] ) ? $instance['btcvalue'] : false;
 		$usdvalue = ! empty( $instance['usdvalue'] ) ? $instance['usdvalue'] : false;
 
-		$jsonObj = json_decode($this->getPrice($this->url), true);		
+		$jsonObj = json_decode($this->getLumensPrice($this->url), true);		
 		
 		// WordPress core before_widget hook (always include )
 		echo $before_widget;
@@ -152,7 +152,7 @@ class Stellar_Price_Widget extends WP_Widget {
 
 	}
 
-	public function getPrice($url) {
+	public function getLumensPrice($url) {
 	
 			$ch = curl_init();
 			curl_setopt ($ch, CURLOPT_URL, $url);
